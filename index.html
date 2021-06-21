@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link href="style/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="bg"></div>
+
+    <div class="center shoping-list" ng-app="myShoppingList" ngCloak ng-controller="myCtrl">
+
+        <div class="shoping-list-wrapper">
+            
+                <header>
+                    <h1>Lista de compras</h1>
+                </header>
+                
+                <div class="to-buy-list">
+
+                    <ul>
+                        <li ng-repeat="x in shopList">
+                            {{x}}
+                            <div class="btns">
+                                <i class="fas fa-trash-alt list-btn" ng-click="removeItemFromBuyList($index)"></i>
+                                <i class="fas fa-check list-btn" ng-click="changeToBoughtList($index)"></i>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div><!--to-buy-list-->
+
+                <div class="item-input">
+
+                    <input id="myInput" ng-model="item" maxlength="18" placeholder="Insira os itens aqui..."/>
+                    <button ng-click="addItem()">Adicionar</button>
+
+                </div><!--item-input-->
+
+            </div><!--shoping-list-wrapper-->
+
+            <div class="bought-list-wrapper">
+
+                <div class="comprados-header">
+                    <h1>Comprados</h1>
+                </div>
+
+                <div class="bought-list">
+
+                    <ul>
+                        <li ng-repeat="x in bought">
+                            <del>{{x}}</del>
+                            <div class="btns">
+                                <i class="fas fa-trash-alt list-btn" ng-click="removeItemFromBoughtList($index)"></i>
+                                <i class="fas fa-redo-alt list-btn" ng-click="changeToBuyList($index)"></i>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div><!--bought-list-->
+
+                <div class="clear-btn">
+
+                    <button ng-click="clearList()">Limpar lista</button>
+
+                </div><!--item-input-->
+
+            </div>
+
+    </div><!--End Of ShoppingList App-->
+
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="/scripts/app.js"></script>
+
+</body>
+
+</html>
